@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Futebol</string>
     <string name="titulo">Brasileirão</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btnAdd">Adicionar</string>
+    <string name="edtNome">Nome Clube</string>
+    <string name="edtLocal">Local Sede</string>
+    <string name="edtTitulos">Titulos Nacionais</string>
+    <string name="edtData">Data Fundação</string>
+    <string name="btnGravar">Gravar</string>
 </resources>

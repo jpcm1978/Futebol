@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="#CC0000"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jpbrasil.futebol.FormAddTimesActivity">
+
+    <EditText
+        android:id="@+id/edtNome"
+        android:hint="@string/edtNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/edtLocal"
+        android:hint="@string/edtLocal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/edtTitulos"
+        android:hint="@string/edtTitulos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+   <EditText
+       android:id="@+id/edtData"
+       android:hint="@string/edtData"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btnGravar"
+        android:layout_gravity="bottom|end"
+        android:text="@string/btnGravar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+</LinearLayout>
