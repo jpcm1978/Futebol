@@ -31,7 +31,7 @@ public class EquipeDAO extends SQLiteOpenHelper{
     * banco de dados*/
     @Override
     public void onCreate(SQLiteDatabase db) {
-        sql = "CREATE TABLE times(nome TEXT NOT NULL, local TEXT NOT NULL, " +
+        sql = "CREATE TABLE equipes(nome TEXT NOT NULL, local TEXT NOT NULL, " +
                 "titulosNacionais TEXT NOT NULL, dataFundacao TEXT NOT NULL);";
         db.execSQL(sql);
     }
@@ -43,7 +43,7 @@ public class EquipeDAO extends SQLiteOpenHelper{
 
     //INSERIR
     public void inserirEquipe (Equipe equipe){
-        sql = "INSERT INTO esquipes(nome, local, titulosNacionais, dataFundacao) VALUES ('"+ equipe.getNome() + "','" +
+        sql = "INSERT INTO equipes(nome, local, titulosNacionais, dataFundacao) VALUES ('"+ equipe.getNome() + "','" +
         equipe.getLocal() + "','" + equipe.getTitulosNacionais() + "','" + equipe.getDataFundacao() +"');";
         /*Para pegar uma instancia do SQLite pegamos GETWRITABLEDATABASE. Se for uma operação de escrita ele retorna
         *uma instancia do SQLite Data Base. Esse getWritableDatabase serve: se formos fazer uma operação para incluir
