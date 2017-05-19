@@ -16,10 +16,10 @@ import java.util.List;
 
 public class ListTimesActivity extends AppCompatActivity {
 
-    ListView ltvTimes;
-    Button btnAddLista;
-
     private static final int REQUEST_CODE_EQUIPE = 1;
+
+    private ListView ltvTimes;
+    private ArrayAdapter<String> adapter;
 
     /*Essa list era de strings, até o banco também, depois do banco foi modificada para a debaixo (equipesNomes) e foi
     * gerada uma nova lista de objeto (List<Equipe> equipe)*/
@@ -27,7 +27,7 @@ public class ListTimesActivity extends AppCompatActivity {
     List<String> equipesNomes = new ArrayList<String>();
     List<Equipe> equipes = new ArrayList<Equipe>();
 
-    private ArrayAdapter<String> adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class ListTimesActivity extends AppCompatActivity {
 
         //PEGAR REFERÊNCIA DO LISTVIEW E DO BUTTON
         ltvTimes = (ListView)findViewById(R.id.ltvTimes);
-        btnAddLista = (Button)findViewById(R.id.btnAddLista);
+        Button btnAddLista = (Button)findViewById(R.id.btnAddLista);
 
 
         //POPULAR LISTA
@@ -47,14 +47,21 @@ public class ListTimesActivity extends AppCompatActivity {
         * Tinhamos uma lista com equipes, então teremos que gerar um array e pegar do banco de dados as equipes que
         * tem lá, só que nesse caso o nosso getAllEquipes retorna uma lista de equipes e não de strings, então isso
         * vai fazer ter um trabalho a mais.*/
-        EquipeDAO dao = new EquipeDAO(this);
+
+        /*EquipeDAO dao = new EquipeDAO(this);
         equipes = dao.pegarTodasEquipes();
-        /*Para cada equipe da lista equipes faça:*/
+        *//*Para cada equipe da lista equipes faça:*//*
         for (Equipe equipe:equipes){//Percorrendo toda minha lista de equipes
             equipesNomes.add(equipe.getNome());//Pegando o nome deles (getNome) e jogando na lista de strings (equipesNomes)
         }
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, equipesNomes);
-        ltvTimes.setAdapter(adapter);
+        ltvTimes.setAdapter(adapter);*/
+        /*Ainda não concluído, do jeito que está ainda não funciona, falta o reload. O método está dentro do onCreate,
+        * e o que estavamos fazendo no onRestart -> adapter.notifyDataSetChanged();
+        * PRECISO REPETIR ESSE CÓDIGO ABAIXO TODA VEZ QUE TIVERMOS UMA ALTERAÇÃO NO onStart, então teremos que extrair o método
+        * (esse código abaixo , que é justamente esse acima que está comentado). FAREMOS DA SEGUINTE MANEIRA:
+        * seleciona o código, botão direito do mouse, Refactor, Extract, Method
+        */
 
 
         //ADICIONAR COMPORTAMENTO PARA O BOTÃO
@@ -80,12 +87,23 @@ public class ListTimesActivity extends AppCompatActivity {
         });
     }
 
+    private void loadEquipes() {
+        EquipeDAO dao = new EquipeDAO(this);
+        equipes = dao.pegarTodasEquipes();
+        for (Equipe equipe:equipes){
+            equipesNomes.add(equipe.getNome());
+        }
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, equipesNomes);
+        ltvTimes.setAdapter(adapter);
+    }
+
     @Override
     protected void onRestart() {
         super.onRestart();
-        adapter.notifyDataSetChanged();
         /*Estou notificando todos que tem esse meu adapter que agora mudei de estado e agora eles vão ter que fazer alguma coisa,
         * essa alguma coisa na implementação do ListView  é carregar de novo*/
+        //adapter.notifyDataSetChanged();
+       loadEquipes();
     }
 
     /*Intent data -> é a informação que estamos precisando que o cara vai passar, que vem através do Intent*/
