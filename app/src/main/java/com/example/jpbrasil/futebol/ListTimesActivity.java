@@ -26,7 +26,7 @@ public class ListTimesActivity extends AppCompatActivity {
     //List<String> equipes = new ArrayList<String>();
     //List<String> equipesNomes = new ArrayList<String>();
     /*Depois do método loadEquipes, essa lista saiu daqui e foi para esse metodo por que como é atributo de classe e toda
-    * vez que é executado se permanecer aqui irei incluir os times mais de uma vez*/
+    * vez que é executado se permanecer aqui irei incluir os times mais de uma vez */
     List<Equipe> equipes = new ArrayList<Equipe>();
 
 
