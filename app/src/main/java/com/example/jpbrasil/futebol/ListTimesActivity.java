@@ -24,7 +24,9 @@ public class ListTimesActivity extends AppCompatActivity {
     /*Essa list era de strings, até o banco também, depois do banco foi modificada para a debaixo (equipesNomes) e foi
     * gerada uma nova lista de objeto (List<Equipe> equipe)*/
     //List<String> equipes = new ArrayList<String>();
-    List<String> equipesNomes = new ArrayList<String>();
+    //List<String> equipesNomes = new ArrayList<String>();
+    /*Depois do método loadEquipes, essa lista saiu daqui e foi para esse metodo por que como é atributo de classe e toda
+    * vez que é executado se permanecer aqui irei incluir os times mais de uma vez*/
     List<Equipe> equipes = new ArrayList<Equipe>();
 
 
@@ -90,6 +92,9 @@ public class ListTimesActivity extends AppCompatActivity {
     private void loadEquipes() {
         EquipeDAO dao = new EquipeDAO(this);
         equipes = dao.pegarTodasEquipes();
+
+        List<String> equipesNomes = new ArrayList<String>();
+
         for (Equipe equipe:equipes){
             equipesNomes.add(equipe.getNome());
         }
