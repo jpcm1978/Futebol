@@ -64,7 +64,7 @@ public class ListTimesActivity extends AppCompatActivity {
         * (esse código abaixo , que é justamente esse acima que está comentado). FAREMOS DA SEGUINTE MANEIRA:
         * seleciona o código, botão direito do mouse, Refactor, Extract, Method
         */
-
+        loadEquipes();
 
         //ADICIONAR COMPORTAMENTO PARA O BOTÃO
         btnAddLista.setOnClickListener(new View.OnClickListener() {
