@@ -8,12 +8,12 @@ import android.widget.EditText;
 
 import com.example.jpbrasil.futebol.model.Equipe;
 
-public class FormAddTimesActivity extends AppCompatActivity {
+public class DetalhesEquipesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_form_add_times);
+        setContentView(R.layout.activity_detalhe_equipe);
 
         final EditText edtNome = (EditText)findViewById(R.id.edtNome);
         final EditText edtLocal = (EditText)findViewById(R.id.edtLocal);

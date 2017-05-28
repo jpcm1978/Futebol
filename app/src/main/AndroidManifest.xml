@@ -16,8 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FormAddTimesActivity" />
-        <activity android:name=".ListTimesActivity"></activity>
+        <activity android:name=".DetalhesEquipesActivity" />
+        <activity android:name=".ListEquipesActivity"></activity>
     </application>
 
 </manifest>

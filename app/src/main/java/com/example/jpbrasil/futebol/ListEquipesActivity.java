@@ -14,7 +14,7 @@ import com.example.jpbrasil.futebol.model.Equipe;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListTimesActivity extends AppCompatActivity {
+public class ListEquipesActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_EQUIPE = 1;
 
@@ -34,7 +34,7 @@ public class ListTimesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_times);
+        setContentView(R.layout.activity_list_equipe);
 
         //PEGAR REFERÊNCIA DO LISTVIEW E DO BUTTON
         ltvTimes = (ListView)findViewById(R.id.ltvTimes);
@@ -74,7 +74,7 @@ public class ListTimesActivity extends AppCompatActivity {
                 /*Como estamos esperando um retorno da outra actvity, iremos usar um startActivityForResult e eu quero
                 que ele me retorne um objeto equipe.*/
                 //startActivity(it);
-                Intent it = new Intent(ListTimesActivity.this, FormAddTimesActivity.class);
+                Intent it = new Intent(ListEquipesActivity.this, DetalhesEquipesActivity.class);
                 startActivityForResult(it, REQUEST_CODE_EQUIPE);
                 /*/*A partir de agora, depois que montamos a activity de formulário, ele vai precisar de dois parâmetros,
                 um é a própria INTENT e o outro vai ser a REQUEST_CODE que é um número para identificar (imagina na tela

@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jpbrasil.futebol.ListTimesActivity">
+    tools:context="com.example.jpbrasil.futebol.ListEquipesActivity">
 
     <ListView
         android:id="@+id/ltvTimes"
-        android:background="#CC0000"
+        android:background="#000"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>

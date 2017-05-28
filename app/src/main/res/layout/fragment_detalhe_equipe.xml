@@ -3,10 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="#CC0000"
+    android:background="#000"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jpbrasil.futebol.FormAddTimesActivity">
+    tools:context="com.example.jpbrasil.futebol.DetalhesEquipesActivity">
 
     <EditText
         android:id="@+id/edtNome"
@@ -26,11 +26,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-   <EditText
-       android:id="@+id/edtData"
-       android:hint="@string/edtData"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/edtData"
+        android:hint="@string/edtData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btnGravar"
