@@ -34,10 +34,22 @@
 
     <Button
         android:id="@+id/btnGravar"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:text="@string/btnGravar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:background="#009900"
+        android:text="@string/btnGravar" />
+
+    <Button
+        android:id="@+id/btnRemover"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:background="#FFCC00"
+        android:text="@string/btnRemover" />
+
 
 
 

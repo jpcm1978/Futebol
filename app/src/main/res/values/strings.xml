@@ -10,4 +10,6 @@
     <string name="edtTitulos">Titulos Nacionais</string>
     <string name="edtData">Data Fundação</string>
     <string name="btnGravar">Gravar</string>
+    <string name="btnRemoverLista">Remover</string>
+    <string name="btnRemover">Remover</string>
 </resources>

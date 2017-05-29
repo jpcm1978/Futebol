@@ -42,6 +42,7 @@ public class FormEquipesFragments extends Fragment {
         }
 
         Button btnGravar = (Button)view.findViewById(R.id.btnGravar);
+        Button btnRemover = (Button)view.findViewById(R.id.btnRemover);
 
         btnGravar.setOnClickListener(new View.OnClickListener() {
             @Override
