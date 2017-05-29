@@ -17,6 +17,7 @@
     <Button
         android:id="@+id/btnAddLista"
         android:layout_margin="10dp"
+        android:padding="20dp"
         android:text="@string/btnAdd"
         android:background="#3333ff"
         android:layout_gravity="bottom"

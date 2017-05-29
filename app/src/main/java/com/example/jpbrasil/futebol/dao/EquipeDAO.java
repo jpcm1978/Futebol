@@ -38,9 +38,9 @@ public class EquipeDAO extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-       /* sql = "DROP TABLE IF EXISTS equipes";
+        sql = "DROP TABLE IF EXISTS equipes";
         db.execSQL(sql);
-        onCreate(db);*/
+        onCreate(db);
     }
 
     //INSERIR
@@ -51,6 +51,13 @@ public class EquipeDAO extends SQLiteOpenHelper{
         *uma instancia do SQLite Data Base. Esse getWritableDatabase serve: se formos fazer uma operação para incluir
         * alguma coisa no banco de dados, escrever algo, iremos chamar ele. Se for só uma operação de leitura, chamamos
         * o getReadableDatabase*/
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(sql);
+        db.close();
+    }
+
+    public void removerEquipe(Equipe equipe){
+        sql = "DELETE FROM equipes WHERE nome = " +equipe.getNome();
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL(sql);
         db.close();

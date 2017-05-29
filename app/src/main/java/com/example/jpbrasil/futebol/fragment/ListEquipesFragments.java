@@ -111,7 +111,7 @@ public class ListEquipesFragments extends Fragment {
         return false;
     }
 
-    private void loadEquipes() {
+    public void loadEquipes() {
         EquipeDAO dao = new EquipeDAO(getActivity());
         equipes = dao.pegarTodasEquipes();
 
