@@ -16,7 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.jpbrasil.futebol.DetalhesEquipesActivity;
+import com.example.jpbrasil.futebol.FormEquipesActivity;
 import com.example.jpbrasil.futebol.R;
 import com.example.jpbrasil.futebol.dao.EquipeDAO;
 import com.example.jpbrasil.futebol.model.Equipe;
@@ -52,29 +52,7 @@ public class ListEquipesFragments extends Fragment {
         Button btnAddLista = (Button)view.findViewById(R.id.btnAddLista);
 
 
-        //POPULAR LISTA
-        /*adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, equipes);
-        ltvTimes.setAdapter(adapter);*/
-        /*Antes pegavamos de uma lista conforme visto no adapter acima comentado. Agora iremos pegar do banco de dados,
-        *para isso teremos que gerar um adapter com novas informações.
-        * Tinhamos uma lista com equipes, então teremos que gerar um array e pegar do banco de dados as equipes que
-        * tem lá, só que nesse caso o nosso getAllEquipes retorna uma lista de equipes e não de strings, então isso
-        * vai fazer ter um trabalho a mais.*/
 
-        /*EquipeDAO dao = new EquipeDAO(this);
-        equipes = dao.pegarTodasEquipes();
-        *//*Para cada equipe da lista equipes faça:*//*
-        for (Equipe equipe:equipes){//Percorrendo toda minha lista de equipes
-            equipesNomes.add(equipe.getNome());//Pegando o nome deles (getNome) e jogando na lista de strings (equipesNomes)
-        }
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, equipesNomes);
-        ltvTimes.setAdapter(adapter);*/
-        /*Ainda não concluído, do jeito que está ainda não funciona, falta o reload. O método está dentro do onCreate,
-        * e o que estavamos fazendo no onRestart -> adapter.notifyDataSetChanged();
-        * PRECISO REPETIR ESSE CÓDIGO ABAIXO TODA VEZ QUE TIVERMOS UMA ALTERAÇÃO NO onStart, então teremos que extrair o método
-        * (esse código abaixo , que é justamente esse acima que está comentado). FAREMOS DA SEGUINTE MANEIRA:
-        * seleciona o código, botão direito do mouse, Refactor, Extract, Method
-        */
         loadEquipes();
 
         ltvEquipes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -88,14 +66,14 @@ public class ListEquipesFragments extends Fragment {
         btnAddLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Configuration configuration = getResources().getConfiguration();
-                if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
+
+                if (isLandScape()){
                     loadEquipeForm(null);
                 }else {
                 /*Como estamos esperando um retorno da outra actvity, iremos usar um startActivityForResult e eu quero
                 que ele me retorne um objeto equipe.*/
                     //startActivity(it);
-                    Intent it = new Intent(getActivity(), DetalhesEquipesActivity.class);
+                    Intent it = new Intent(getActivity(), FormEquipesActivity.class);
                     startActivity(it);
                 }
                 /*/*A partir de agora, depois que montamos a activity de formulário, ele vai precisar de dois parâmetros,
@@ -115,15 +93,22 @@ public class ListEquipesFragments extends Fragment {
     private void loadEquipeForm(Equipe equipe) {
         FragmentManager manager = getActivity().getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        Fragment fragment = new DetalhesEquipesFragments();
+        Fragment fragment = new FormEquipesFragments();
         if (equipe != null) {
             Bundle bundle = new Bundle();
             bundle.putSerializable("equipe", equipe);
             fragment.setArguments(bundle);
         }
-        transaction.replace(R.id.fragmentDetalhe, fragment);
+        transaction.replace(R.id.fragmentForm, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    public boolean isLandScape(){
+        Configuration configuration = getResources().getConfiguration();
+        if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+            return true;
+        return false;
     }
 
     private void loadEquipes() {
@@ -150,22 +135,4 @@ public class ListEquipesFragments extends Fragment {
         //adapter.notifyDataSetChanged();
         loadEquipes();
     }
-
-    /*Intent data -> é a informação que estamos precisando que o cara vai passar, que vem através do Intent*//*
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        *//*Quando essa activity voltar vai retornar algo, então vamos fazer uma checagem primeiro*//*
-        if (resultCode == RESULT_OK){
-            if (requestCode == REQUEST_CODE_EQUIPE){
-                *//*Fiz essas verificações acima, agora é só pegar o objeto*//*
-                Equipe equipe = (Equipe)data.getSerializableExtra("equipe");//Pronto, peguei a Equipe agora é inserir na lista
-                //equipes.add(equipe.getNome());//Feito isso temos que dar o refrash (on Restart)
-                *//*Essa parte comentada acima era usada antes do banco ser usado, depois da classe EquipeDAO contruída,
-                usaremos essa forma abaixo:*//*
-                EquipeDAO dao = new EquipeDAO(getActivity());
-                dao.inserirEquipe(equipe);
-            }
-        }
-    }*/
 }

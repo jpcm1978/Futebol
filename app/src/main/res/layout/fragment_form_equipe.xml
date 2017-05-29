@@ -6,7 +6,7 @@
     android:background="#000"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jpbrasil.futebol.DetalhesEquipesActivity">
+    tools:context="com.example.jpbrasil.futebol.FormEquipesActivity">
 
     <EditText
         android:id="@+id/edtNome"

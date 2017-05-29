@@ -1,7 +1,6 @@
 package com.example.jpbrasil.futebol.fragment;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,22 +9,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.jpbrasil.futebol.R;
+import com.example.jpbrasil.futebol.dao.EquipeDAO;
 import com.example.jpbrasil.futebol.model.Equipe;
-
-import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by JpBrasil on 28/05/2017.
  */
 
-public class DetalhesEquipesFragments extends Fragment {
+public class FormEquipesFragments extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_detalhe_equipe, container, false);
+        View view = inflater.inflate(R.layout.fragment_form_equipe, container, false);
 
         final EditText edtNome = (EditText)view.findViewById(R.id.edtNome);
         final EditText edtLocal = (EditText)view.findViewById(R.id.edtLocal);
@@ -48,20 +47,29 @@ public class DetalhesEquipesFragments extends Fragment {
             @Override
             public void onClick(View v) {
 
+                EquipeDAO dao = new EquipeDAO(getActivity());
                 Equipe equipe = new Equipe();
                 equipe.setNome(edtNome.getText().toString());
                 equipe.setLocal(edtLocal.getText().toString());
                 equipe.setTitulosNacionais(edtTitulos.getText().toString());
                 equipe.setDataFundacao(edtData.getText().toString());
-
-                /**Aqui estamos pegando a Intent da PrimeiraActivity*/
-                Intent it = getActivity().getIntent().putExtra("equipe", equipe);
-                /*Estou dizendo que coloquei meu objeto na Intent, e estou dizendo agora: Tá ok!*/
-                getActivity().setResult(Activity.RESULT_OK, it);
+                dao.inserirEquipe(equipe);
                 getActivity().finish();
+                Toast.makeText(getActivity(), "Equipe Inserida com Sucesso!", Toast.LENGTH_SHORT).show();
+                if (isLandScape()) {
+                    getActivity().finish();
+                    Toast.makeText(getActivity(), "Equipe Inserida com Sucesso!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         return view;
+    }
+
+    public boolean isLandScape(){
+        Configuration configuration = getResources().getConfiguration();
+        if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+            return true;
+        return false;
     }
 }
