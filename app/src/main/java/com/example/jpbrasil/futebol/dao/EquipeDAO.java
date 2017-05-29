@@ -38,9 +38,9 @@ public class EquipeDAO extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        sql = "DROP TABLE IF EXISTS equipes";
+       /* sql = "DROP TABLE IF EXISTS equipes";
         db.execSQL(sql);
-        onCreate(db);
+        onCreate(db);*/
     }
 
     //INSERIR
