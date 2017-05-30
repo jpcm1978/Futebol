@@ -20,6 +20,8 @@ public class ListEquipesActivity extends AppCompatActivity implements FormEquipe
 
     ListEquipesFragments fragmentList;
 
+    private int[] escudos = {R.drawable.sport, R.drawable.bahia, R.drawable.vitoria};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
