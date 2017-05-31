@@ -3,4 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="corAmareloEscuro">#FFCC00</color>
+    <color name="corAmareloClaro">#FFFF00</color>
+    <color name="corVermelho">#FF0000</color>
+    <color name="corVermelhoEscuro">#990000</color>
+    <color name="corOuro">#999900</color>
+    <color name="corPreto">#000</color>
+    <color name="corBranco">#FFF</color>
+    <color name="corOuroClaro">#CFB53B</color>
 </resources>

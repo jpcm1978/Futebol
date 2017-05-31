@@ -3,13 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="#000"
+    android:background="#FFF"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.jpbrasil.futebol.FormEquipesActivity">
 
     <EditText
         android:id="@+id/edtNome"
+        android:textColor="@color/colorPrimaryDark"
         android:hint="@string/edtNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

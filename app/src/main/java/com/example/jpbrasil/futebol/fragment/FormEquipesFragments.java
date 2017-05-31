@@ -58,7 +58,7 @@ public class FormEquipesFragments extends Fragment {
                 OnRefreshFormOK activity = (OnRefreshFormOK)getActivity();
                 activity.refresh();
                 Toast.makeText(getActivity(), "Equipe Inserida com Sucesso!", Toast.LENGTH_SHORT).show();
-                if (isLandScape()) {
+                if (!isLandScape()) {
                     getActivity().finish();
                 }
             }
