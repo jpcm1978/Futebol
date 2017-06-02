@@ -7,4 +7,10 @@
         android:icon="@drawable/ic_action_globe"
         app:showAsAction="always"/>
 
+    <item
+        android:title="@string/btnPagerToolbar"
+        android:id="@+id/btnPager"
+        android:icon="@drawable/ic_view_carousel"
+        app:showAsAction="always"/>
+
 </menu>

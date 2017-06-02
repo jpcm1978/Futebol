@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class PrimeiraActivity extends AppCompatActivity {
 
-    TextView titulo;
+
     ImageView imagem;
 
     @Override

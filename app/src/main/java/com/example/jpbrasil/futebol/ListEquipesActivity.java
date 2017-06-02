@@ -1,6 +1,7 @@
 package com.example.jpbrasil.futebol;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -26,8 +27,8 @@ public class ListEquipesActivity extends AppCompatActivity implements FormEquipe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_equipe);
         fragmentList = (ListEquipesFragments) getSupportFragmentManager().findFragmentById(R.id.fragmentList);
-        toolbarLayout = (Toolbar)findViewById(R.id.toolbarLista);
-        setSupportActionBar(toolbarLayout);
+        toolbarLayout = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbarLayout);//Setando a toolbar
     }
 
     @Override
@@ -35,9 +36,7 @@ public class ListEquipesActivity extends AppCompatActivity implements FormEquipe
         fragmentList.loadEquipes();
     }
 
-    //método que acha toolbar
-
-
+    //Para fazer algo na toolbar usamos onCreateOptionsMenu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();//Criando variável que pega um menu inflater
@@ -54,6 +53,10 @@ public class ListEquipesActivity extends AppCompatActivity implements FormEquipe
             case R.id.botaoMap:
                 it = new Intent(this, MapsActivity.class);
                 startActivity(it);
+                break;
+            case R.id.btnPager:
+                Toast toast = Toast.makeText(this, "Testando",Toast.LENGTH_SHORT);
+                toast.show();
                 break;
         }
         return super.onOptionsItemSelected(item);
