@@ -135,4 +135,6 @@ public class ListEquipesFragments extends Fragment {
         //adapter.notifyDataSetChanged();
         loadEquipes();
     }
+
+
 }
