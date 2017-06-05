@@ -1,14 +1,12 @@
 package com.example.jpbrasil.futebol;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.jpbrasil.futebol.fragment.FormEquipesFragments;
 import com.example.jpbrasil.futebol.fragment.ListEquipesFragments;
@@ -20,7 +18,7 @@ public class ListEquipesActivity extends AppCompatActivity implements FormEquipe
     ListEquipesFragments fragmentList;
     private Toolbar toolbarLayout;
 
-    private int[] escudos = {R.drawable.sport, R.drawable.bahia, R.drawable.vitoria};
+    private int[] escudos = {R.drawable.sport_estadio, R.drawable.bahia, R.drawable.vitoria};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +53,8 @@ public class ListEquipesActivity extends AppCompatActivity implements FormEquipe
                 startActivity(it);
                 break;
             case R.id.btnPager:
-                Toast toast = Toast.makeText(this, "Testando",Toast.LENGTH_SHORT);
-                toast.show();
-                break;
+                it = new Intent(this, ViewPagerEquipeActivity.class);
+                startActivity(it);
         }
         return super.onOptionsItemSelected(item);
     }

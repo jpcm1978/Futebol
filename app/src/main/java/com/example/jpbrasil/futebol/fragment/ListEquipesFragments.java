@@ -44,6 +44,7 @@ public class ListEquipesFragments extends Fragment {
         ltvEquipes = (ListView)view.findViewById(R.id.ltvEquipes);
         Button btnAddLista = (Button)view.findViewById(R.id.btnAddLista);
 
+        loadEquipes();
 
         ltvEquipes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -60,15 +61,12 @@ public class ListEquipesFragments extends Fragment {
                 if (isLandScape()){
                     loadEquipeForm(null);
                 }else {
-
                     Intent it = new Intent(getActivity(), FormEquipesActivity.class);
                     startActivity(it);
                 }
             }
         });
 
-
-        loadEquipes();
         return view;
     }
 

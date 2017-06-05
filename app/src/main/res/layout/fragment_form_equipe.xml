@@ -17,25 +17,28 @@
 
     <EditText
         android:id="@+id/edtLocal"
+        android:textColor="@color/colorPrimaryDark"
         android:hint="@string/edtLocal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/edtTitulos"
+        android:textColor="@color/colorPrimaryDark"
         android:hint="@string/edtTitulos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/edtData"
+        android:textColor="@color/colorPrimaryDark"
         android:hint="@string/edtData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btnGravar"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
@@ -44,7 +47,7 @@
 
     <Button
         android:id="@+id/btnRemover"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

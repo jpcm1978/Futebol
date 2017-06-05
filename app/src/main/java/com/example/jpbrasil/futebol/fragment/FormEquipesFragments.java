@@ -55,11 +55,12 @@ public class FormEquipesFragments extends Fragment {
                 equipe.setTitulosNacionais(edtTitulos.getText().toString());
                 equipe.setDataFundacao(edtData.getText().toString());
                 dao.inserirEquipe(equipe);
-                OnRefreshFormOK activity = (OnRefreshFormOK)getActivity();
-                activity.refresh();
+
+               /* OnRefreshFormOK activity = (OnRefreshFormOK)getActivity();
+                activity.refresh();*/
                 Toast.makeText(getActivity(), "Equipe Inserida com Sucesso!", Toast.LENGTH_SHORT).show();
                 if (!isLandScape()) {
-                    getActivity().finish();
+                    //getActivity().finish();
                 }
             }
         });
