@@ -1,10 +1,15 @@
 package com.example.jpbrasil.futebol;
 
+import android.os.AsyncTask;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+
+import com.example.jpbrasil.futebol.model.Equipe;
+
+import java.util.List;
 
 public class ViewPagerEquipeActivity extends AppCompatActivity {
 

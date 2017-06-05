@@ -3,6 +3,7 @@ package com.example.jpbrasil.futebol.fragment;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -23,6 +24,11 @@ import com.example.jpbrasil.futebol.model.Equipe;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 /**
  * Created by JpBrasil on 28/05/2017.
  */
@@ -49,9 +55,18 @@ public class ListEquipesFragments extends Fragment {
         ltvEquipes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                loadEquipeForm(equipes.get(position));
+                //loadEquipeForm(equipes.get(position));
+
+                Equipe equipe = equipes.get(position);
+                if (getActivity() instanceof CliqueNaEquipeListener){
+                    CliqueNaEquipeListener listener = (CliqueNaEquipeListener)getActivity();
+                    listener.equipeFoiClicada(equipe);
+                }
+                Intent it = new Intent(getActivity(), DetalheEquipesFragments.class);
+
             }
         });
+
 
         //ADICIONAR COMPORTAMENTO PARA O BOTÃO
         btnAddLista.setOnClickListener(new View.OnClickListener() {
@@ -117,5 +132,8 @@ public class ListEquipesFragments extends Fragment {
         loadEquipes();
     }
 
+    public interface CliqueNaEquipeListener{
+        void equipeFoiClicada(Equipe equipe);
+    }
 
 }
