@@ -57,10 +57,8 @@ public class EquipeDAO extends SQLiteOpenHelper{
     }
 
     public void removerEquipe(Equipe equipe){
-        sql = "DELETE FROM equipes WHERE nome = " +equipe.getNome();
-        SQLiteDatabase db = getWritableDatabase();
-        db.execSQL(sql);
-        db.close();
+
+
     }
 
     //GET ALL EQUIPES

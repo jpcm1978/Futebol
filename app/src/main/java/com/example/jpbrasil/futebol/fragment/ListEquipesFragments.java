@@ -3,7 +3,6 @@ package com.example.jpbrasil.futebol.fragment;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -25,15 +24,14 @@ import com.example.jpbrasil.futebol.model.Equipe;
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
 /**
  * Created by JpBrasil on 28/05/2017.
  */
 
 public class ListEquipesFragments extends Fragment {
+
+    public final static String ID_EXTRA = "com.example.jpbrasil.futebol.FormEquipesActivity._ID";
+    public final static String contexto = "1";
 
     private ListView ltvEquipes;
     private ArrayAdapter<String> adapter;
@@ -55,18 +53,15 @@ public class ListEquipesFragments extends Fragment {
         ltvEquipes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //loadEquipeForm(equipes.get(position));
-
-                Equipe equipe = equipes.get(position);
-                if (getActivity() instanceof CliqueNaEquipeListener){
-                    CliqueNaEquipeListener listener = (CliqueNaEquipeListener)getActivity();
-                    listener.equipeFoiClicada(equipe);
+                if (isLandScape()){
+                    loadEquipeForm(equipes.get(position));
+                }else {
+                    Intent it = new Intent(getActivity(), DetalheEquipesFragments.class);
+                    it.putExtra(ID_EXTRA, String.valueOf(id));
+                    startActivity(it);
                 }
-                Intent it = new Intent(getActivity(), DetalheEquipesFragments.class);
-
             }
         });
-
 
         //ADICIONAR COMPORTAMENTO PARA O BOTÃO
         btnAddLista.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +81,8 @@ public class ListEquipesFragments extends Fragment {
     }
 
 
+
+    //Listando Equipe no Tablete
     private void loadEquipeForm(Equipe equipe) {
         FragmentManager manager = getActivity().getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
@@ -99,6 +96,7 @@ public class ListEquipesFragments extends Fragment {
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
 
     public boolean isLandScape(){
         Configuration configuration = getResources().getConfiguration();
@@ -135,5 +133,8 @@ public class ListEquipesFragments extends Fragment {
     public interface CliqueNaEquipeListener{
         void equipeFoiClicada(Equipe equipe);
     }
-
 }
+
+
+
+
