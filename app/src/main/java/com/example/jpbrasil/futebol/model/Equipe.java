@@ -1,6 +1,7 @@
 package com.example.jpbrasil.futebol.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by JpBrasil on 18/05/2017.
@@ -8,10 +9,19 @@ import java.io.Serializable;
 
 public class Equipe implements Serializable{
 
+    List<Jogos> jogos;
     String nome;
     String local;
     String titulosNacionais;
     String dataFundacao;
+
+    public List<Jogos> getJogos() {
+        return jogos;
+    }
+
+    public void setJogos(List<Jogos> jogos) {
+        this.jogos = jogos;
+    }
 
     public String getNome() {
         return nome;

@@ -8,12 +8,35 @@ import java.io.Serializable;
 
 public class Jogos implements Serializable {
 
-    String local;
-    String diaHora;
+
+    String nome;
     String adversario;
+    String local;
+    String datahora;
+    String estado;
+    String foto;
+    String site;
+
+
 
     public Jogos() {
 
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getAdversario() {
+        return adversario;
+    }
+
+    public void setAdversario(String adversario) {
+        this.adversario = adversario;
     }
 
     public String getLocal() {
@@ -24,19 +47,35 @@ public class Jogos implements Serializable {
         this.local = local;
     }
 
-    public String getDiaHora() {
-        return diaHora;
+    public String getDatahora() {
+        return datahora;
     }
 
-    public void setDiaHora(String diaHora) {
-        this.diaHora = diaHora;
+    public void setDatahora(String datahora) {
+        this.datahora = datahora;
     }
 
-    public String getAdversario() {
-        return adversario;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setAdversario(String adversario) {
-        this.adversario = adversario;
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public String getSite() {
+        return site;
+    }
+
+    public void setSite(String site) {
+        this.site = site;
     }
 }

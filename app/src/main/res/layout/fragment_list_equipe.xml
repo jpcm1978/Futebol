@@ -28,7 +28,4 @@
         layout="@layout/toolbar"
         android:id="@+id/toolbarLista"/>
 
-
-
-
 </FrameLayout>

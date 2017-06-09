@@ -3,6 +3,7 @@ package com.example.jpbrasil.futebol.fragment;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,22 +17,25 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.jpbrasil.futebol.DetalheEquipesActivity;
 import com.example.jpbrasil.futebol.FormEquipesActivity;
 import com.example.jpbrasil.futebol.R;
 import com.example.jpbrasil.futebol.dao.EquipeDAO;
 import com.example.jpbrasil.futebol.model.Equipe;
+import com.example.jpbrasil.futebol.model.Jogos;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by JpBrasil on 28/05/2017.
  */
 
 public class ListEquipesFragments extends Fragment {
-
-    public final static String ID_EXTRA = "com.example.jpbrasil.futebol.FormEquipesActivity._ID";
-    public final static String contexto = "1";
 
     private ListView ltvEquipes;
     private ArrayAdapter<String> adapter;
@@ -53,12 +57,11 @@ public class ListEquipesFragments extends Fragment {
         ltvEquipes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 if (isLandScape()){
                     loadEquipeForm(equipes.get(position));
                 }else {
-                    Intent it = new Intent(getActivity(), DetalheEquipesFragments.class);
-                    it.putExtra(ID_EXTRA, String.valueOf(id));
-                    startActivity(it);
+                    loadDetalheJson(equipes.get(position));
                 }
             }
         });
@@ -80,7 +83,23 @@ public class ListEquipesFragments extends Fragment {
         return view;
     }
 
-
+    /**
+     *
+     * @param equipe Recebe a equipe selecionada na lista
+     */
+    private void loadDetalheJson(Equipe equipe){
+        FragmentManager manager = getActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        Fragment fragment = new DetalheEquipesFragments();
+        if (equipe != null) {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("equipe", equipe);
+            fragment.setArguments(bundle);
+        }
+        transaction.replace(R.id.fragmentList, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 
     //Listando Equipe no Tablete
     private void loadEquipeForm(Equipe equipe) {
@@ -130,8 +149,36 @@ public class ListEquipesFragments extends Fragment {
         loadEquipes();
     }
 
-    public interface CliqueNaEquipeListener{
+    /*public interface CliqueNaEquipeListener{
         void equipeFoiClicada(Equipe equipe);
+    }*/
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        new JogosTask().execute();
+    }
+
+    class JogosTask extends AsyncTask<Void, Void, Jogos> {
+
+        @Override
+        protected Jogos doInBackground(Void... params) {
+
+            OkHttpClient client = new OkHttpClient();
+
+            Request request = new Request.Builder()
+                    .url("https://www.dropbox.com/s/wo665ra8np3bkqo/time.json?dl=0")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                String jsonString = response.body().string();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return null;
+        }
     }
 }
 

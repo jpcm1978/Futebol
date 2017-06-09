@@ -56,11 +56,14 @@ public class FormEquipesFragments extends Fragment {
                 equipe.setDataFundacao(edtData.getText().toString());
                 dao.inserirEquipe(equipe);
                 Toast.makeText(getActivity(), "Equipe Inserida com Sucesso!", Toast.LENGTH_SHORT).show();
+
                /* OnRefreshFormOK activity = (OnRefreshFormOK)getActivity();
                 activity.refresh();*/
 
                 if (!isLandScape()) {
-                    //getActivity().finish();
+                    /*Toast.makeText(getActivity(), "Não Funciona no Portland. Essa função só LandScape!", Toast.LENGTH_SHORT).show();
+                    getActivity().finish();*/
+
                 }
             }
         });
