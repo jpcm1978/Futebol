@@ -1,6 +1,9 @@
 package com.example.jpbrasil.futebol.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by JpBrasil on 06/06/2017.
@@ -8,27 +11,30 @@ import java.io.Serializable;
 
 public class Jogos implements Serializable {
 
-
-    String nome;
+    @SerializedName("TIME")
+    List<Jogos> jogos;
+    String urlNome;
     String adversario;
     String local;
     String datahora;
     String estado;
-    String foto;
+    String urlFoto;
     String site;
 
-
-
-    public Jogos() {
-
+    public List<Jogos> getJogos() {
+        return jogos;
     }
 
-    public String getNome() {
-        return nome;
+    public void setJogos(List<Jogos> jogos) {
+        this.jogos = jogos;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getUrlNome() {
+        return urlNome;
+    }
+
+    public void setUrlNome(String urlNome) {
+        this.urlNome = urlNome;
     }
 
     public String getAdversario() {
@@ -63,12 +69,12 @@ public class Jogos implements Serializable {
         this.estado = estado;
     }
 
-    public String getFoto() {
-        return foto;
+    public String getUrlFoto() {
+        return urlFoto;
     }
 
-    public void setFoto(String foto) {
-        this.foto = foto;
+    public void setUrlFoto(String urlFoto) {
+        this.urlFoto = urlFoto;
     }
 
     public String getSite() {
@@ -78,4 +84,10 @@ public class Jogos implements Serializable {
     public void setSite(String site) {
         this.site = site;
     }
+
+    public Jogos() {
+
+    }
+
+
 }

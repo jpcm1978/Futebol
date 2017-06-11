@@ -15,8 +15,7 @@ import java.util.List;
 
 public class PagerAdapterFragments extends FragmentPagerAdapter {
 
-    int[] imagens = {R.drawable.atletico_go_estadio, R.drawable.atletico_mg_estadio, R.drawable.atletico_pr_estadio,
-            R.drawable.sport_estadio};
+    int[] imagens = {R.drawable.sport_estadio, R.drawable.atletico_mg_estadio, R.drawable.atletico_pr_estadio};
     String[] titulos;
     List<PageFragment> pagers = new ArrayList<PageFragment>();
 
@@ -24,7 +23,6 @@ public class PagerAdapterFragments extends FragmentPagerAdapter {
     public PagerAdapterFragments(FragmentManager fm, String[] titulos) {
         super(fm);
         this.titulos = titulos;
-        this.pagers.add(new PageFragment());
         this.pagers.add(new PageFragment());
         this.pagers.add(new PageFragment());
         this.pagers.add(new PageFragment());
@@ -38,7 +36,7 @@ public class PagerAdapterFragments extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return 3;
     }
 
     @Override

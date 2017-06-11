@@ -17,19 +17,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.jpbrasil.futebol.DetalheEquipesActivity;
 import com.example.jpbrasil.futebol.FormEquipesActivity;
 import com.example.jpbrasil.futebol.R;
 import com.example.jpbrasil.futebol.dao.EquipeDAO;
 import com.example.jpbrasil.futebol.model.Equipe;
-import com.example.jpbrasil.futebol.model.Jogos;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 /**
  * Created by JpBrasil on 28/05/2017.
@@ -47,6 +41,7 @@ public class ListEquipesFragments extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list_equipe, container, false);
+
 
         //PEGAR REFERÊNCIA DO LISTVIEW E DO BUTTON
         ltvEquipes = (ListView)view.findViewById(R.id.ltvEquipes);
@@ -152,34 +147,6 @@ public class ListEquipesFragments extends Fragment {
     /*public interface CliqueNaEquipeListener{
         void equipeFoiClicada(Equipe equipe);
     }*/
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        new JogosTask().execute();
-    }
-
-    class JogosTask extends AsyncTask<Void, Void, Jogos> {
-
-        @Override
-        protected Jogos doInBackground(Void... params) {
-
-            OkHttpClient client = new OkHttpClient();
-
-            Request request = new Request.Builder()
-                    .url("https://www.dropbox.com/s/wo665ra8np3bkqo/time.json?dl=0")
-                    .build();
-
-            try {
-                Response response = client.newCall(request).execute();
-                String jsonString = response.body().string();
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-            return null;
-        }
-    }
 }
 
 

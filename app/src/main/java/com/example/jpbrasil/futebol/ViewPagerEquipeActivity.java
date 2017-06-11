@@ -27,7 +27,7 @@ public class ViewPagerEquipeActivity extends AppCompatActivity {
 
         //Carregando o ViewPager
         ViewPager viewPager = (ViewPager)findViewById(R.id.viewPager);
-        String[] titulos = {"Atlético GO", "Atlético MG", "Atlético PR", "Sport"};
+        String[] titulos = {"Sport", "Atlético MG", "Atlético PR"};
         //Instanciando PagerAdapterFragments
         PagerAdapterFragments adapterFragments = new PagerAdapterFragments(
                 getSupportFragmentManager(), titulos);

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Football</string>
+    <string name="titulo">Brasileirão</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="btnAdd">Add</string>
+    <string name="edtNome">Club Name</string>
+    <string name="edtLocal">Local Headquarters</string>
+    <string name="edtTitulos">National Titles</string>
+    <string name="edtData">Date Foundation</string>
+    <string name="btnGravar">Save</string>
+    <string name="btnRemoverLista">Remove</string>
+    <string name="btnRemover">Remove</string>
+    <string name="btnMapToolbar">btnMapToolbar</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="btnPagerToolbar">pager</string>
+</resources>
