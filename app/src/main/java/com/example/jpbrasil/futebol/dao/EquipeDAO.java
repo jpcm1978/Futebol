@@ -24,7 +24,7 @@ public class EquipeDAO extends SQLiteOpenHelper{
          *Essa classe abstrata também tem um construtor que  que teremos que implementar (EquipeDAO). Esse construtor tem
          *setar: CONTEXTO (Context), o nome do banco (name), um CURSORFACTORY e a versão do banco (version) */
     public EquipeDAO(Context context) {
-        super(context, "futebol", null, 1);
+        super(context, "futebol", null, 2);
     }
 
     /*Aqui teremos que criar a tabela. Vai passar referência de DB, que é através dele que iremos fazer as tranzações com o

@@ -7,13 +7,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.jpbrasil.futebol.JogosAdapterJson;
 import com.example.jpbrasil.futebol.R;
 import com.example.jpbrasil.futebol.model.Jogos;
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,93 +32,121 @@ import okhttp3.Response;
 
 public class DetalheEquipesFragments extends Fragment {
 
-    List<Jogos> mJogos;
+    ArrayList<Jogos> mJogos;
     ListView mListaJson;
-
-
+    View view;
+    JogosAdapterJson adapterJson;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_detalhe_equipe, container, false);
-        mListaJson = (ListView)view.findViewById(R.id.ltvJson);
-
-        mJogos = new ArrayList<>();
-
-        mListaJson.setAdapter(new ArrayAdapter<Jogos>(
-                getActivity(),
-                android.R.layout.simple_list_item_2,
-                mJogos
-        ));
+        view = inflater.inflate(R.layout.fragment_detalhe_equipe, container, false);
 
         new JogosTask().execute();
+       /*
+        mJogos = new ArrayList<Jogos>();
+
+        adapterJson = new JogosAdapterJson(getActivity(), mJogos);
+
+        mListaJson = (ListView)view.findViewById(R.id.ltvJson);
+
+        mListaJson.setAdapter(adapterJson);
+*/
+
+       /* mListaJson.setAdapter(new ArrayAdapter<Jogos>(
+                getActivity(),
+                android.R.layout.simple_list_item_1,
+                mJogos
+        ));*/
+
+
         return view;
     }
 
-    class JogosTask extends AsyncTask<Void, Void, Jogos>{
+    class JogosTask extends AsyncTask<Void, Void, ArrayList<Jogos> >{
 
         @Override
-        protected Jogos doInBackground(Void... params) {
+        protected ArrayList<Jogos> doInBackground(Void... params) {
 
-            OkHttpClient client = new OkHttpClient();
+//            OkHttpClient client = new OkHttpClient();
 
             Request request = new Request.Builder()
-                    .url("https://www.dropbox.com/s/wo665ra8np3bkqo/time.json?dl=0")
+                    .url("http://www.mocky.io/v2/593f299c100000c71347f33a")
                     .build();
 
             try {
-                Response response = client.newCall(request).execute();
+                Response response = new OkHttpClient().newCall(request).execute();
+
                 String jsonString = response.body().string();
                 Log.d("JPCM", jsonString);
-                Gson gson = new Gson();
-                Jogos jogos = gson.fromJson(jsonString, Jogos.class);
-                return jogos;
-            }catch (Exception e){
+                mJogos = new ArrayList<Jogos>();
+                JSONArray jsonArrayPartidas = new JSONArray(jsonString);
+                for( int i = 0; i < jsonArrayPartidas.length() ; i++ ){
+                    JSONObject jogoJsonObject = jsonArrayPartidas.getJSONObject(i);
+                    Jogos j = new Jogos();
+                    j.setLocal(jogoJsonObject.getString("LOCAL"));
+                    j.setAdversario(jogoJsonObject.getString("ADVERSARIO"));
+                    j.setEstado(jogoJsonObject.getString("ESTADO"));
+                    j.setSite(jogoJsonObject.getString("SITE"));
+                    j.setDatahora(jogoJsonObject.getString("DATAHORA"));
+                    j.setUrlFoto(jogoJsonObject.getString("FOTO"));
+                    mJogos.add(j);
+                }
+            } catch (Exception e) {
                 e.printStackTrace();
             }
+            return mJogos;
+        }
 
-            return null;
+        @Override
+        protected void onPostExecute(ArrayList<Jogos> jogos) {
+            adapterJson = new JogosAdapterJson(getActivity().getBaseContext(), mJogos);
+
+            mListaJson = (ListView)view.findViewById(R.id.ltvJson);
+
+            mListaJson.setAdapter(adapterJson);
+            super.onPostExecute(jogos);
         }
     }
 }
 
     /**
-     * ListView listView;
-     private TextView time;
-     private TextView adversario;
-     private TextView local;
-     private TextView dataHora;
-     private TextView estado;
-     private TextView foto;
-     private TextView site;
+ * ListView listView;
+ private TextView time;
+ private TextView adversario;
+ private TextView local;
+ private TextView dataHora;
+ private TextView estado;
+ private TextView foto;
+ private TextView site;
 
-     @Nullable
-     @Override
-     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-     View view = inflater.inflate(R.layout.fragment_detalhe_equipe, container, false);
+ @Nullable
+ @Override
+ public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+ View view = inflater.inflate(R.layout.fragment_detalhe_equipe, container, false);
 
-     listView = (ListView)view.findViewById(R.id.ltvJson);
-     time = (TextView) view.findViewById(R.id.nome);
-     adversario = (TextView)view.findViewById(R.id.adversario);
-     local = (TextView)view.findViewById(R.id.local);
-     dataHora = (TextView)view.findViewById(R.id.datahora);
-     estado = (TextView)view.findViewById(R.id.estado);
-     foto = (TextView) view.findViewById(R.id.foto);
-     site = (TextView)view.findViewById(R.id.site);
+ listView = (ListView)view.findViewById(R.id.ltvJson);
+ time = (TextView) view.findViewById(R.id.nome);
+ adversario = (TextView)view.findViewById(R.id.adversario);
+ local = (TextView)view.findViewById(R.id.local);
+ dataHora = (TextView)view.findViewById(R.id.datahora);
+ estado = (TextView)view.findViewById(R.id.estado);
+ foto = (TextView) view.findViewById(R.id.foto);
+ site = (TextView)view.findViewById(R.id.site);
 
-     listView.setAdapter(new ArrayAdapter<Jogos>(
-     getActivity(),
-     android.R.layout.simple_list_item_1,
-     new ArrayList<Jogos>()
-     ));
+ listView.setAdapter(new ArrayAdapter<Jogos>(
+ getActivity(),
+ android.R.layout.simple_list_item_1,
+ new ArrayList<Jogos>()
+ ));
 
-     JogosTask jogosTask = new JogosTask();
-     jogosTask.execute();
+ JogosTask jogosTask = new JogosTask();
+ jogosTask.execute();
 
-     return view;
-     }
+ return view;
+ }
 
 
-     */
+ */
 
 

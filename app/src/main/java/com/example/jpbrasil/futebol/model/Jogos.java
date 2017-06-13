@@ -11,8 +11,9 @@ import java.util.List;
 
 public class Jogos implements Serializable {
 
-    @SerializedName("TIME")
-    List<Jogos> jogos;
+   /* @SerializedName("TIME")
+    List<Jogos> jogos;*/
+
     String urlNome;
     String adversario;
     String local;
@@ -21,13 +22,13 @@ public class Jogos implements Serializable {
     String urlFoto;
     String site;
 
-    public List<Jogos> getJogos() {
+    /*public List<Jogos> getJogos() {
         return jogos;
     }
 
     public void setJogos(List<Jogos> jogos) {
         this.jogos = jogos;
-    }
+    }*/
 
     public String getUrlNome() {
         return urlNome;

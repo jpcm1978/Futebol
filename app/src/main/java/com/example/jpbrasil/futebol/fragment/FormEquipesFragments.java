@@ -1,5 +1,6 @@
 package com.example.jpbrasil.futebol.fragment;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -60,11 +61,11 @@ public class FormEquipesFragments extends Fragment {
                 OnRefreshFormOK activity = (OnRefreshFormOK)getActivity();
                 activity.refresh();
 
-               /* if (!isLandScape()) {
-                    //Toast.makeText(getActivity(), "Não Funciona no Portland. Essa função só LandScape!", Toast.LENGTH_SHORT).show();
-                    getActivity().finish();
-
-                }*/
+               if (!isLandScape()) {
+                   Toast.makeText(getActivity(), "Equipe Inserida com Sucesso!", Toast.LENGTH_SHORT).show();
+                   OnRefreshFormOK activity2 = (OnRefreshFormOK)getActivity();
+                   activity2.refresh();
+                }
             }
         });
 
