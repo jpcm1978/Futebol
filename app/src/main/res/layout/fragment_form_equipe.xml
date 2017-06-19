@@ -8,6 +8,8 @@
     android:layout_height="match_parent"
     tools:context="com.example.jpbrasil.futebol.FormEquipesActivity">
 
+    <include layout="@layout/toolbar"/>
+
     <EditText
         android:id="@+id/edtNome"
         android:textColor="@color/colorPrimaryDark"

@@ -78,28 +78,39 @@ public class JogosAdapterJson extends ArrayAdapter<Jogos> {
 
         return convertView;
     }
+}
 
-    /**
-     * Retorna a quantidade de itens existentes na lista
-     */
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Retorna a quantidade de itens existentes na lista
+ */
    /* @Override
     public int getCount() {
         return mJogos.size();
     }*/
 
-    /**
-     * Devolvendo o item da lista pela posição, ele quer saber um item a partir de uma posição
-     */
+/**
+ * Devolvendo o item da lista pela posição, ele quer saber um item a partir de uma posição
+ */
    /* @Override
     public Object getItem(int position) {
         return mJogos.get(position);
     }*/
 
-    /**
-     * Devolvendo o id do item da lista. Esse método espera saber qual é o id do objeto que está sendo buscado
-     /*  *//*
+/**
+ * Devolvendo o id do item da lista. Esse método espera saber qual é o id do objeto que está sendo buscado
+ /*  *//*
     @Override
     public long getItemId(int position) {
         return 0;
     }*/
-}

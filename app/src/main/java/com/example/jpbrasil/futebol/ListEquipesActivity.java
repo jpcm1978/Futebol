@@ -18,8 +18,6 @@ public class ListEquipesActivity extends AppCompatActivity implements FormEquipe
     ListEquipesFragments fragmentList;
     private Toolbar toolbarLayout;
 
-    private int[] escudos = {R.drawable.sport_estadio, R.drawable.bahia, R.drawable.vitoria};
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +39,6 @@ public class ListEquipesActivity extends AppCompatActivity implements FormEquipe
         inflater.inflate(R.menu.menu_toolbar, menu);//referenciando o menu que criamos
         return true;
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {//Aqui vai detectar o menu

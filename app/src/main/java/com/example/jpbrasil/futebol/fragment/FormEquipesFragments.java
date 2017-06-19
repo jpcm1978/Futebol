@@ -49,22 +49,33 @@ public class FormEquipesFragments extends Fragment {
             @Override
             public void onClick(View v) {
 
-                EquipeDAO dao = new EquipeDAO(getActivity());
-                Equipe equipe = new Equipe();
-                equipe.setNome(edtNome.getText().toString());
-                equipe.setLocal(edtLocal.getText().toString());
-                equipe.setTitulosNacionais(edtTitulos.getText().toString());
-                equipe.setDataFundacao(edtData.getText().toString());
-                dao.inserirEquipe(equipe);
-                Toast.makeText(getActivity(), "Equipe Inserida com Sucesso!", Toast.LENGTH_SHORT).show();
+                if (!isLandScape()) {
 
-                OnRefreshFormOK activity = (OnRefreshFormOK)getActivity();
-                activity.refresh();
+                    EquipeDAO dao = new EquipeDAO(getActivity());
+                    Equipe equipe = new Equipe();
+                    equipe.setNome(edtNome.getText().toString());
+                    equipe.setLocal(edtLocal.getText().toString());
+                    equipe.setTitulosNacionais(edtTitulos.getText().toString());
+                    equipe.setDataFundacao(edtData.getText().toString());
+                    dao.inserirEquipe(equipe);
 
-               if (!isLandScape()) {
-                   Toast.makeText(getActivity(), "Equipe Inserida com Sucesso!", Toast.LENGTH_SHORT).show();
-                   OnRefreshFormOK activity2 = (OnRefreshFormOK)getActivity();
-                   activity2.refresh();
+                    Toast.makeText(getActivity(), "Equipe Inserida com Sucesso!", Toast.LENGTH_SHORT).show();
+
+                    /*OnRefreshFormOK activity = (OnRefreshFormOK)getActivity();
+                    activity.refresh();*/
+                }else {
+
+                    EquipeDAO dao = new EquipeDAO(getActivity());
+                    Equipe equipe = new Equipe();
+                    equipe.setNome(edtNome.getText().toString());
+                    equipe.setLocal(edtLocal.getText().toString());
+                    equipe.setTitulosNacionais(edtTitulos.getText().toString());
+                    equipe.setDataFundacao(edtData.getText().toString());
+                    dao.inserirEquipe(equipe);
+                    Toast.makeText(getActivity(), "Equipe Inserida com Sucesso!", Toast.LENGTH_SHORT).show();
+
+                    OnRefreshFormOK activity = (OnRefreshFormOK)getActivity();
+                    activity.refresh();
                 }
             }
         });
@@ -73,6 +84,14 @@ public class FormEquipesFragments extends Fragment {
             @Override
             public void onClick(View v) {
 
+                EquipeDAO dao = new EquipeDAO(getActivity());
+                Equipe equipe = new Equipe();
+                equipe.setNome(edtNome.getText().toString());
+                dao.removerEquipe(equipe);
+                Toast.makeText(getActivity(), "Equipe Removida com Sucesso!", Toast.LENGTH_SHORT).show();
+
+                OnRefreshFormOK activity = (OnRefreshFormOK)getActivity();
+                activity.refresh();
             }
         });
 

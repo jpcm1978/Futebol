@@ -12,14 +12,11 @@ import android.widget.ListView;
 import com.example.jpbrasil.futebol.JogosAdapterJson;
 import com.example.jpbrasil.futebol.R;
 import com.example.jpbrasil.futebol.model.Jogos;
-import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -36,6 +33,7 @@ public class DetalheEquipesFragments extends Fragment {
     ListView mListaJson;
     View view;
     JogosAdapterJson adapterJson;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -71,7 +69,7 @@ public class DetalheEquipesFragments extends Fragment {
 //            OkHttpClient client = new OkHttpClient();
 
             Request request = new Request.Builder()
-                    .url("http://www.mocky.io/v2/593f299c100000c71347f33a")
+                    .url("http://www.mocky.io/v2/5942c879120000bf0cddc5f3")
                     .build();
 
             try {
@@ -105,6 +103,7 @@ public class DetalheEquipesFragments extends Fragment {
             mListaJson = (ListView)view.findViewById(R.id.ltvJson);
 
             mListaJson.setAdapter(adapterJson);
+
             super.onPostExecute(jogos);
         }
     }

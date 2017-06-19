@@ -12,6 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
 
+
+
+    <ImageView
+        android:id="@+id/foto"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
     <TextView
         android:id="@+id/nome"
         android:layout_width="wrap_content"
@@ -34,11 +41,6 @@
 
     <TextView
         android:id="@+id/estado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <ImageView
-        android:id="@+id/foto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

@@ -18,6 +18,7 @@ import java.util.List;
 public class EquipeDAO extends SQLiteOpenHelper{
 
     private String sql;
+    private String sqlRemove;
 
     /*O OpenHelper do SQLite, ele implementa dois métodos: ONCREATE E ONUPGRADE, que já recebe uma referência (um objeto)
          *para o nosso database (que tem um monte de método para agente trabalhar e manipular informação.
@@ -57,9 +58,14 @@ public class EquipeDAO extends SQLiteOpenHelper{
     }
 
     public void removerEquipe(Equipe equipe){
-
+        sqlRemove = "DELETE FROM equipes WHERE nome="+ equipe.getNome();
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sqlRemove);
+        database.close();
 
     }
+
+
 
     //GET ALL EQUIPES
     public List<Equipe> pegarTodasEquipes(){

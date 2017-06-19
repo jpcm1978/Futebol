@@ -15,7 +15,6 @@ import java.util.List;
 
 public class PagerAdapterFragments extends FragmentPagerAdapter {
 
-    int[] imagens = {R.drawable.sport_estadio, R.drawable.atletico_mg_estadio, R.drawable.atletico_pr_estadio};
     String[] titulos;
     List<PageFragment> pagers = new ArrayList<PageFragment>();
 

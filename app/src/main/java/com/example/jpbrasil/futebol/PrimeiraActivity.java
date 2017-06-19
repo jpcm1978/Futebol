@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class PrimeiraActivity extends AppCompatActivity {
 
-    ImageView imagem;
+    //ImageView imagem;
     private static int SPLASH_TIME_OUT = 2000;
 
     @Override
